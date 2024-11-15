@@ -115,6 +115,11 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+
+alias wt="git worktree"
+alias adjust-screen="xrandr --output Virtual-1 --mode 1920x1080"
+
 source "$HOME/.cargo/env"
 
 export WASMTIME_HOME="$HOME/.wasmtime"
@@ -123,9 +128,6 @@ export PATH="$WASMTIME_HOME/bin:$PATH"
 
 export PATH="$PATH:/home/leo/Programar/sdk/flutter/bin"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 . "$HOME/.cargo/env"
 export DENO_INSTALL="/home/leo/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"

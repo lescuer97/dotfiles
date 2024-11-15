@@ -11,6 +11,7 @@ return require('packer').startup(function()
     -- optional for icon support
     requires = { 'kyazdani42/nvim-web-devicons' }
 }
+
 -- lualine 
 use {
     'nvim-lualine/lualine.nvim',
@@ -71,6 +72,12 @@ use {
 --tmux 
 use 'christoomey/vim-tmux-navigator'
 
+-- telescope
+use {
+  'nvim-telescope/telescope.nvim', tag = '0.1.8',
+-- or                            , branch = '0.1.x',
+  requires = { {'nvim-lua/plenary.nvim'} }
+}
 
 end
 )

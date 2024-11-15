@@ -12,6 +12,7 @@ vim.opt.textwidth = 120
 vim.opt.spell = true
 vim.opt.linebreak = true
 vim.opt.spelllang = "en"
+vim.opt.formatoptions = vim.opt.formatoptions + 't'
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
