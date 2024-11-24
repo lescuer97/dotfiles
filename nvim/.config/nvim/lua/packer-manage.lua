@@ -79,5 +79,15 @@ use {
   requires = { {'nvim-lua/plenary.nvim'} }
 }
 
+-- Debugging
+use {
+  'mfussenegger/nvim-dap',
+  requires = {'leoluz/nvim-dap-go', 'rcarriga/nvim-dap-ui',
+
+  "nvim-neotest/nvim-nio"
+  }
+}
+
+
 end
 )

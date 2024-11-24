@@ -71,7 +71,7 @@ require('mason-lspconfig').setup({
     'cssls',
     'html',
     'gopls',
-    'svelte',
+    'svelte'
     },
     handlers = {
       lsp_zero.default_setup,
