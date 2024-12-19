@@ -2,8 +2,8 @@
 local dap, dapui = require("dap"), require("dapui")
 local nnoremap = require("keymap").nnoremap
 
-require("dap-go").setup()
 dapui.setup()
+require("dap-go").setup()
 
 -- vim.key
 nnoremap( "<Leader>b", dap.toggle_breakpoint)
@@ -14,7 +14,7 @@ nnoremap( "<F2>", dap.step_into)
 nnoremap( "<F3>", dap.step_over)
 nnoremap( "<F4>", dap.step_out)
 nnoremap( "<F5>", dap.step_back)
-nnoremap( "<F13>", dap.restart)
+nnoremap( "<F10>", dap.restart)
 
 
 dap.listeners.before.attach.dapui_config = function()
