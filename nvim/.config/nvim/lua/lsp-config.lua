@@ -67,7 +67,7 @@ require('mason-lspconfig').setup({
     'eslint',
     'lua_ls',
     'rust_analyzer',
-    'denols',
+    'ts_ls',
     'cssls',
     'html',
     'gopls',

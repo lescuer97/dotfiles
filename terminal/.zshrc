@@ -49,6 +49,7 @@ eval "$(pyenv init -)"
 alias wt="git worktree"
 alias audio-fix="systemctl --user restart pipewire.service"
 alias fix-screen="xrandr --output Virtual-1 --mode 1920x1080"
+alias 1440-screen="xrandr --output Virtual-1 --mode 2560x1440_142.00"
 
 
 # pnpm
