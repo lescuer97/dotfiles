@@ -1,0 +1,50 @@
+window:
+  startup_mode: Maximized
+  padding:
+    x: 2
+    y: 2
+  dynamic_padding: true
+  decorations: full
+  opacity: 0.98
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+font:
+  normal:
+    family: "MesloLGS NF"
+    style: Regular
+  bold:
+    family: "MesloLGS NF"
+    style: Bold
+  italic:
+    family: "MesloLGS NF"
+    style: Italic
+  bold_italic:
+    family: "MesloLGS NF"
+    style: Bold Italic
+  size: 10.0
+  offset:
+    x: 0
+    y: 1
+  glyph_offset:
+    x: 0
+    y: 0
+
+import:
+  - ./tokyo-night.toml
+
+cursor:
+  style:
+    shape: Block
+    blinking: On
+  blink_interval: 750
+
+live_config_reload: true
+
+shell:
+  program: /bin/zsh
+
+mouse:
+  hide_when_typing: true

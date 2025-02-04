@@ -40,6 +40,11 @@ export VIMRUNTIME=/usr/share/nvim/runtime
 SAVEHIST=1000  # Save most-recent 1000 lines
 HISTFILE=~/.zsh_history
 
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    tmux|screen|xterm-color|*-256color) color_prompt=yes;;
+esac
+
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
