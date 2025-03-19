@@ -144,7 +144,7 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
+-- vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
@@ -193,6 +193,22 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 -- vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 -- vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 -- vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- NOTE This  are my own remaps
+vim.keymap.set("n", "<leader>pv", "<cmd>Ex<CR>")
+-- vim.keymap.set("n", "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<CR>")
+-- vim.keymap.set(
+-- 	"n",
+-- 	"<C-g>",
+-- 	"<cmd>lua require('fzf-lua').live_grep_glob({filter = [[rg --invert-match 'node_modules/|designer/|designer/|build/|archive/|templates/|dist/|.git/|Cargo.lock|package-lock.json|LICENSES.txt|LICENSES.json']]})<CR>"
+-- )
+vim.keymap.set("n", "<C-h>", "<cmd>tabprevious<CR>")
+vim.keymap.set("n", "<C-l>", "<cmd>tabnext<CR>")
+vim.keymap.set("n", "<C-n>", "<cmd>tabnew<CR>")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzz")
+vim.keymap.set("n", "N", "Nzz")
+vim.keymap.set("n", "<leader>y", '"+y')
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -419,10 +435,10 @@ require("lazy").setup({
 			local builtin = require("telescope.builtin")
 			-- vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 			-- vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-			-- vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+			vim.keymap.set("n", "<leader>p", builtin.find_files, { desc = "[S]earch [F]iles" })
 			-- vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
-			-- vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-			-- vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+			-- vim.keymap.set("n", "C-g", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+			vim.keymap.set("n", "<leader>g", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 			-- vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 			-- vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 			-- vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
@@ -843,13 +859,13 @@ require("lazy").setup({
 				-- No, but seriously. Please read `:help ins-completion`, it is really good!
 				mapping = cmp.mapping.preset.insert({
 					-- Select the [n]ext item
-					["<C-n>"] = cmp.mapping.select_next_item(),
+					-- ["<C-n>"] = cmp.mapping.select_next_item(),
 					-- Select the [p]revious item
-					["<C-p>"] = cmp.mapping.select_prev_item(),
+					-- ["<C-p>"] = cmp.mapping.select_prev_item(),
 
 					-- Scroll the documentation window [b]ack / [f]orward
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					-- ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+					-- ["<C-f>"] = cmp.mapping.scroll_docs(4),
 
 					-- Accept ([y]es) the completion.
 					--  This will auto-import if your LSP supports it.
@@ -865,7 +881,7 @@ require("lazy").setup({
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display
 					--  completions whenever it has completion options available.
-					["<C-Space>"] = cmp.mapping.complete({}),
+					-- ["<C-Space>"] = cmp.mapping.complete({}),
 
 					-- Think of <c-l> as moving to the right of your snippet expansion.
 					--  So if you have a snippet that's like:
@@ -875,16 +891,16 @@ require("lazy").setup({
 					--
 					-- <c-l> will move you to the right of each of the expansion locations.
 					-- <c-h> is similar, except moving you backwards.
-					["<C-l>"] = cmp.mapping(function()
-						if luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
-						end
-					end, { "i", "s" }),
-					["<C-h>"] = cmp.mapping(function()
-						if luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
-						end
-					end, { "i", "s" }),
+					-- ["<C-l>"] = cmp.mapping(function()
+					-- 	if luasnip.expand_or_locally_jumpable() then
+					-- 		luasnip.expand_or_jump()
+					-- 	end
+					-- end, { "i", "s" }),
+					-- ["<C-h>"] = cmp.mapping(function()
+					-- 	if luasnip.locally_jumpable(-1) then
+					-- 		luasnip.jump(-1)
+					-- 	end
+					-- end, { "i", "s" }),
 
 					-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
 					--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -1029,7 +1045,7 @@ require("lazy").setup({
 	--    This is the easiest way to modularize your config.
 	--
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-	-- { import = 'custom.plugins' },
+	{ import = "custom.plugins" },
 	--
 	-- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
 	-- Or use telescope!

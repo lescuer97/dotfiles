@@ -30,6 +30,5 @@ return {
 		vim.keymap.set("n", "<leader>6", function()
 			ui.nav_file(6)
 		end)
-		vim.keymap.set("n")
 	end,
 }
