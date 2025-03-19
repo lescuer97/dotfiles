@@ -2,7 +2,9 @@
 local dap, dapui = require("dap"), require("dapui")
 local nnoremap = require("keymap").nnoremap
 
+-- configuration of how the debugger looks
 dapui.setup()
+
 require("dap-go").setup()
 
 -- vim.key
@@ -16,6 +18,9 @@ nnoremap( "<F4>", dap.step_out)
 nnoremap( "<F5>", dap.step_back)
 nnoremap( "<F10>", dap.restart)
 
+
+-- // con
+-- config size of dap-ui
 
 dap.listeners.before.attach.dapui_config = function()
   dapui.open()
