@@ -27,28 +27,28 @@ return {
   keys = {
     -- Basic debugging keymaps, feel free to change to your liking!
     {
-      '<F5>',
+      '<F1>',
       function()
         require('dap').continue()
       end,
       desc = 'Debug: Start/Continue',
     },
     {
-      '<F1>',
+      '<F2>',
       function()
         require('dap').step_into()
       end,
       desc = 'Debug: Step Into',
     },
     {
-      '<F2>',
+      '<F3>',
       function()
         require('dap').step_over()
       end,
       desc = 'Debug: Step Over',
     },
     {
-      '<F3>',
+      '<F4>',
       function()
         require('dap').step_out()
       end,
@@ -65,6 +65,13 @@ return {
       '<leader>B',
       function()
         require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+      end,
+      desc = 'Debug: Set Breakpoint',
+    },
+    {
+      '<F10>',
+      function()
+        require('dap').restart()
       end,
       desc = 'Debug: Set Breakpoint',
     },

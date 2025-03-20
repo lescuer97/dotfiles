@@ -545,10 +545,7 @@ require("lazy").setup({
 					-- Jump to the definition of the word under your cursor.
 					--  This is where a variable was first declared, or where a function is defined, etc.
 					--  To jump back, press <C-t>.
-					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-
-					-- Find references for the word under your cursor.
-					map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+					map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 
 					-- Jump to the implementation of the word under your cursor.
 					--  Useful when your language has ways of declaring types without an actual implementation.
@@ -573,7 +570,10 @@ require("lazy").setup({
 
 					-- Rename the variable under your cursor.
 					--  Most Language Servers support renaming across files, etc.
-					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+					map("<leader>vrn", vim.lsp.buf.rename, "[R]e[n]ame")
+					--
+					-- Find references for the word under your cursor.
+					map("<leader>vrr", vim.lsp.buf.references, "[G]oto [R]eferences")
 
 					-- Execute a code action, usually your cursor needs to be on top of an error
 					-- or a suggestion from your LSP for this to activate.
@@ -652,7 +652,13 @@ require("lazy").setup({
 			-- See :help vim.diagnostic.Opts
 			vim.diagnostic.config({
 				severity_sort = true,
-				float = { border = "rounded", source = "if_many" },
+				float = {
+					style = "minimal",
+					border = "rounded",
+					source = "if_many",
+					header = "",
+					prefix = "",
+				},
 				underline = { severity = vim.diagnostic.severity.ERROR },
 				signs = vim.g.have_nerd_font and {
 					text = {
@@ -662,19 +668,7 @@ require("lazy").setup({
 						[vim.diagnostic.severity.HINT] = "󰌶 ",
 					},
 				} or {},
-				virtual_text = {
-					source = "if_many",
-					spacing = 2,
-					format = function(diagnostic)
-						local diagnostic_message = {
-							[vim.diagnostic.severity.ERROR] = diagnostic.message,
-							[vim.diagnostic.severity.WARN] = diagnostic.message,
-							[vim.diagnostic.severity.INFO] = diagnostic.message,
-							[vim.diagnostic.severity.HINT] = diagnostic.message,
-						}
-						return diagnostic_message[diagnostic.severity]
-					end,
-				},
+				virtual_text = true,
 			})
 
 			-- LSP servers and clients are able to communicate to each other what features they support.
@@ -743,7 +737,16 @@ require("lazy").setup({
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			require("mason-lspconfig").setup({
-				ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+				ensure_installed = {
+					"eslint",
+					"lua_ls",
+					"rust_analyzer",
+					"ts_ls",
+					"cssls",
+					"html",
+					"gopls"
+					-- "svelte",
+				}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
 				automatic_installation = false,
 				handlers = {
 					function(server_name)
@@ -775,22 +778,23 @@ require("lazy").setup({
 		},
 		opts = {
 			notify_on_error = false,
-			format_on_save = function(bufnr)
-				-- Disable "format_on_save lsp_fallback" for languages that don't
-				-- have a well standardized coding style. You can add additional
-				-- languages here or re-enable it for the disabled ones.
-				local disable_filetypes = { c = true, lua = false, cpp = true }
-				local lsp_format_opt
-				if disable_filetypes[vim.bo[bufnr].filetype] then
-					lsp_format_opt = "never"
-				else
-					lsp_format_opt = "fallback"
-				end
-				return {
-					timeout_ms = 500,
-					lsp_format = lsp_format_opt,
-				}
-			end,
+			-- format_on_save = function(bufnr)
+			-- 	-- Disable "format_on_save lsp_fallback" for languages that don't
+			-- 	-- have a well standardized coding style. You can add additional
+			-- 	-- languages here or re-enable it for the disabled ones.
+			-- 	local disable_filetypes = { c = true, lua = false, cpp = true }
+			-- 	local lsp_format_opt
+			-- 	if disable_filetypes[vim.bo[bufnr].filetype] then
+			-- 		lsp_format_opt = "never"
+			-- 	else
+			-- 		lsp_format_opt = "fallback"
+			-- 	end
+			-- 	return {
+			-- 		timeout_ms = 500,
+			-- 		lsp_format = lsp_format_opt,
+			-- 	}
+			-- end,
+			format_on_save = false,
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- Conform can also run multiple formatters sequentially
@@ -845,6 +849,7 @@ require("lazy").setup({
 			local luasnip = require("luasnip")
 			luasnip.config.setup({})
 
+			-- cmp.
 			cmp.setup({
 				snippet = {
 					expand = function(args)
@@ -874,9 +879,9 @@ require("lazy").setup({
 
 					-- If you prefer more traditional completion keymaps,
 					-- you can uncomment the following lines
-					--['<CR>'] = cmp.mapping.confirm { select = true },
-					--['<Tab>'] = cmp.mapping.select_next_item(),
-					--['<S-Tab>'] = cmp.mapping.select_prev_item(),
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<Tab>"] = cmp.mapping.select_next_item(),
+					["<S-Tab>"] = cmp.mapping.select_prev_item(),
 
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display
@@ -1008,14 +1013,15 @@ require("lazy").setup({
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
+			sync_install = false,
 			highlight = {
 				enable = true,
 				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
 				--  If you are experiencing weird indenting issues, add the language to
 				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
-				additional_vim_regex_highlighting = { "ruby" },
+				additional_vim_regex_highlighting = false,
 			},
-			indent = { enable = true, disable = { "ruby" } },
+			-- indent = { enable = true, disable = { "ruby" } },
 		},
 		-- There are additional nvim-treesitter modules that you can use to interact
 		-- with nvim-treesitter. You should go explore a few and see what interests you:
