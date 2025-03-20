@@ -689,9 +689,9 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				-- clangd = {},
-				-- gopls = {},
+				gopls = {},
 				-- pyright = {},
-				-- rust_analyzer = {},
+				rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -738,13 +738,13 @@ require("lazy").setup({
 
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"eslint",
-					"lua_ls",
-					"rust_analyzer",
-					"ts_ls",
-					"cssls",
-					"html",
-					"gopls"
+					-- "eslint",
+					-- "lua_ls",
+					-- "rust_analyzer",
+					-- "ts_ls",
+					-- "cssls",
+					-- "html",
+					-- "gopls"
 					-- "svelte",
 				}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
 				automatic_installation = false,
@@ -1012,7 +1012,7 @@ require("lazy").setup({
 				"vimdoc",
 			},
 			-- Autoinstall languages that are not installed
-			auto_install = true,
+			auto_install = false,
 			sync_install = false,
 			highlight = {
 				enable = true,
