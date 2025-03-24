@@ -4,4 +4,8 @@
 -- See the kickstart.nvim README for more information
 return {
 	"christoomey/vim-tmux-navigator",
+	"ray-x/guihua.lua",
+	"hrsh7th/vim-vsnip",
+	"RishabhRD/popfix",
+	"tpope/vim-fugitive"
 }

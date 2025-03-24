@@ -161,6 +161,23 @@ vim.opt.scrolloff = 10
 -- See `:help 'confirm'`
 vim.opt.confirm = true
 
+-- my changes
+vim.opt.colorcolumn = "100"
+vim.opt.textwidth = 120
+vim.opt.spell = true
+vim.opt.linebreak = true
+vim.opt.spelllang = "en"
+vim.opt.formatoptions = vim.opt.formatoptions + "t"
+
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true
+
+vim.opt.smartindent = true
+
+vim.opt.wrap = false
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -574,6 +591,7 @@ require("lazy").setup({
 					--
 					-- Find references for the word under your cursor.
 					map("<leader>vrr", vim.lsp.buf.references, "[G]oto [R]eferences")
+					map("<leader>vd", vim.diagnostic.open_float, "")
 
 					-- Execute a code action, usually your cursor needs to be on top of an error
 					-- or a suggestion from your LSP for this to activate.
@@ -857,6 +875,7 @@ require("lazy").setup({
 					end,
 				},
 				completion = { completeopt = "menu,menuone,noinsert" },
+				preselect = "item",
 
 				-- For an understanding of why these mappings were
 				-- chosen, you will need to read `:help ins-completion`
@@ -917,6 +936,7 @@ require("lazy").setup({
 						group_index = 0,
 					},
 					{ name = "nvim_lsp" },
+					{ name = "buffer", keyword_length = 2 },
 					{ name = "luasnip" },
 					{ name = "path" },
 					{ name = "nvim_lsp_signature_help" },
@@ -939,11 +959,14 @@ require("lazy").setup({
 					comments = { italic = false }, -- Disable italics in comments
 				},
 			})
+			vim.g.tokyonight_transparent_sidebar = true
+			vim.g.tokyonight_transparent = true
+			vim.opt.background = "dark"
 
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("tokyonight-night")
+			vim.cmd.colorscheme("tokyonight-moon")
 		end,
 	},
 
@@ -1010,10 +1033,15 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
+				"jsdoc",
+				"tsx",
+				"typescript",
+				"javascript",
+				"go",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = false,
-			sync_install = false,
+			sync_install = true,
 			highlight = {
 				enable = true,
 				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
@@ -1040,9 +1068,9 @@ require("lazy").setup({
 	--  Here are some example plugins that I've included in the Kickstart repository.
 	--  Uncomment any of the lines below to enable them (you will need to restart nvim).
 	--
-	require 'kickstart.plugins.debug',
+	require("kickstart.plugins.debug"),
 	-- require 'kickstart.plugins.indent_line',
-	require 'kickstart.plugins.lint',
+	require("kickstart.plugins.lint"),
 	-- require 'kickstart.plugins.autopairs',
 	-- require 'kickstart.plugins.neo-tree',
 	-- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
