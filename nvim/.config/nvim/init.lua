@@ -227,6 +227,14 @@ vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "<leader>y", '"+y')
 
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	border = "rounded", -- Can be "single", "double", "rounded", etc.
+})
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	border = "rounded",
+})
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -853,13 +861,16 @@ require("lazy").setup({
 				},
 			},
 			"saadparwaiz1/cmp_luasnip",
+			"rafamadriz/friendly-snippets",
 
 			-- Adds other completion capabilities.
 			--  nvim-cmp does not ship with all sources by default. They are split
 			--  into multiple repos for maintenance purposes.
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"hrsh7th/cmp-nvim-lua",
 		},
 		config = function()
 			-- See `:help cmp`
@@ -1050,6 +1061,9 @@ require("lazy").setup({
 				additional_vim_regex_highlighting = false,
 			},
 			-- indent = { enable = true, disable = { "ruby" } },
+		},
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-context",
 		},
 		-- There are additional nvim-treesitter modules that you can use to interact
 		-- with nvim-treesitter. You should go explore a few and see what interests you:
