@@ -1,0 +1,6 @@
+# dotfiles neovim alacritty tmux
+This directory contains dotfiles for Neovim, Alacritty, and tmux configurations.
+
+# neovim lazyvim
+The Neovim configuration uses LazyVim.
+
