@@ -83,3 +83,4 @@ export PATH="/home/leo/.local/bin:/home/leo/.pyenv/shims:/home/leo/.pyenv/bin:::
 export PATH="$HOME/zig-linux-x86_64-0.14.0/:$PATH"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+export PATH="/home/leo/.zapstore:$PATH"

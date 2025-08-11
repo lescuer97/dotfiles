@@ -514,15 +514,15 @@ require("lazy").setup({
 			-- Automatically install LSPs and related tools to stdpath for Neovim
 			-- Mason must be loaded before its dependents so we need to set it up here.
 			-- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
-			{ "williamboman/mason.nvim", opts = {} },
-			"williamboman/mason-lspconfig.nvim",
+			{ "mason-org/mason.nvim", opts = {} },
+			"mason-org/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 			-- Useful status updates for LSP.
 			{ "j-hui/fidget.nvim", opts = {} },
 
-			-- Allows extra capabilities provided by nvim-cmp
-			"hrsh7th/cmp-nvim-lsp",
+	      -- Allows extra capabilities provided by blink.cmp
+      		'saghen/blink.cmp',
 		},
 		config = function()
 			-- Brief aside: **What is LSP?**
@@ -784,6 +784,7 @@ require("lazy").setup({
 					-- "svelte",
 				}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
 				automatic_installation = false,
+                automatic_enable = true,
 				handlers = {
 					function(server_name)
 						local server = servers[server_name] or {}
