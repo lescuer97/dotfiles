@@ -478,6 +478,26 @@ require("lazy").setup({
 				}))
 			end, { desc = "[/] Fuzzily search in current buffer" })
 
+			vim.keymap.set("n", "<leader>~", function()
+				-- Get current cursor position
+				local cursor = vim.api.nvim_win_get_cursor(0)
+				local col_num = cursor[2]
+
+				-- Get the current line
+				local line = vim.api.nvim_get_current_line()
+
+				-- Split line into before cursor and from cursor to end
+				local before_cursor = line:sub(1, col_num)
+				local from_cursor_to_end = line:sub(col_num + 1)
+
+				-- Wrap from cursor to end with tildes
+				local wrapped_part = "~" .. from_cursor_to_end .. "~"
+
+				-- Combine and set the new line
+				local new_line = before_cursor .. wrapped_part
+				vim.api.nvim_set_current_line(new_line)
+			end, { desc = "Wrap from cursor to end of line with tildes" })
+
 			-- It's also possible to pass additional configuration options.
 			--  See `:help telescope.builtin.live_grep()` for information about particular keys
 			vim.keymap.set("n", "<leader>s/", function()
@@ -521,8 +541,8 @@ require("lazy").setup({
 			-- Useful status updates for LSP.
 			{ "j-hui/fidget.nvim", opts = {} },
 
-	      -- Allows extra capabilities provided by blink.cmp
-      		'saghen/blink.cmp',
+			-- Allows extra capabilities provided by blink.cmp
+			"saghen/blink.cmp",
 		},
 		config = function()
 			-- Brief aside: **What is LSP?**
@@ -784,7 +804,6 @@ require("lazy").setup({
 					-- "svelte",
 				}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
 				automatic_installation = false,
-                automatic_enable = true,
 				handlers = {
 					function(server_name)
 						local server = servers[server_name] or {}
