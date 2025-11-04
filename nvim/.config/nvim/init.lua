@@ -227,6 +227,8 @@ vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "<leader>y", '"+y')
 
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#ffffff" })
+
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 	border = "rounded", -- Can be "single", "double", "rounded", etc.
 })
@@ -737,7 +739,10 @@ require("lazy").setup({
 				-- clangd = {},
 				gopls = {},
 				-- pyright = {},
-				rust_analyzer = {},
+				-- rust_analyzer = {
+				-- 	mason = false,
+				-- 	cmd = { "/home/leo/.cargo/bin/rust-analyzer" },
+				-- },
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -795,13 +800,13 @@ require("lazy").setup({
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					-- "eslint",
-					-- "lua_ls",
+					"lua_ls",
 					-- "rust_analyzer",
 					-- "ts_ls",
 					-- "cssls",
-					-- "html",
-					-- "gopls"
-					-- "svelte",
+					"html",
+					"gopls",
+					"svelte",
 				}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
 				automatic_installation = false,
 				handlers = {
