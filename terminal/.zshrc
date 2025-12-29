@@ -5,9 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+# source ~/powerlevel10k/powerlevel10k.zsh-theme
 source "$HOME/.cargo/env"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 export WASMTIME_HOME="$HOME/.wasmtime"
 
 export PATH="$WASMTIME_HOME/bin:$PATH"
@@ -81,6 +81,8 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 export PATH="/home/leo/.local/bin:/home/leo/.pyenv/shims:/home/leo/.pyenv/bin:::::/home/leo/.deno/bin::/home/leo/.wasmer/bin:/home/leo/.nvm/versions/node/v20.11.0/bin:/home/leo/.deno/bin:/home/leo/.wasmtime/bin:/home/leo/.pyenv/bin:::::/home/leo/.deno/bin::/home/leo/.wasmer/bin:/home/leo/.nvm/versions/node/v20.11.0/bin:/home/leo/.deno/bin:/home/leo/.wasmtime/bin:/bin:::::/home/leo/.deno/bin::/home/leo/.wasmer/bin:/home/leo/.nvm/versions/node/v20.11.0/bin:/home/leo/.deno/bin:/home/leo/.wasmtime/bin:/home/leo/.local/share/pnpm:/bin:::::/home/leo/.deno/bin::/home/leo/.wasmer/bin:/home/leo/.nvm/versions/node/v20.11.0/bin:/home/leo/.deno/bin:/home/leo/.wasmtime/bin:/home/leo/.cargo/bin:/home/leo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/leo/.wasmer/globals/wapm_packages/.bin:/usr/local/go/bin:/home/leo/go/bin:/home/leo/.local/bin:/home/leo/.local/bin/lnd:/home/leo/.lua-lsp/bin:/home/leo/.nvm/versions/node/v17.2.0/lib/node_modules/vscode-langservers-extracted:/home/leo/.wasmer/globals/wapm_packages/.bin:/usr/local/go/bin:/home/leo/go/bin:/home/leo/.local/bin:/home/leo/.local/bin/lnd:/home/leo/.lua-lsp/bin:/home/leo/.nvm/versions/node/v17.2.0/lib/node_modules/vscode-langservers-extracted:/home/leo/.wasmer/globals/wapm_packages/.bin:/usr/local/go/bin:/home/leo/go/bin:/home/leo/.local/bin:/home/leo/.local/bin/lnd:/home/leo/.lua-lsp/bin:/home/leo/.nvm/versions/node/v17.2.0/lib/node_modules/vscode-langservers-extracted:/home/leo/.wasmer/globals/wapm_packages/.bin:/usr/local/go/bin:/home/leo/go/bin:/home/leo/.local/bin:/home/leo/.local/bin/lnd:/home/leo/.lua-lsp/bin:/home/leo/.nvm/versions/node/v17.2.0/lib/node_modules/vscode-langservers-extracted"
 export PATH="$HOME/zig-linux-x86_64-0.14.0/:$PATH"
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+# source ~/powerlevel10k/powerlevel10k.zsh-theme
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 export PATH="/home/leo/.zapstore:$PATH"
+
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/keyring/ssh
