@@ -7,5 +7,10 @@ return {
 	"ray-x/guihua.lua",
 	"hrsh7th/vim-vsnip",
 	"RishabhRD/popfix",
-	"tpope/vim-fugitive"
+	"tpope/vim-fugitive",
+	-- Local development plugin
+	-- {
+	-- 	dir =  "/home/leo/Programar/trabajo/open_source/tabtabtab",
+	-- 	name = "tabtabtab",
+	-- },
 }

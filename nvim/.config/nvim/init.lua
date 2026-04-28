@@ -394,7 +394,7 @@ require("lazy").setup({
 	{ -- Fuzzy Finder (files, lsp, etc)
 		"nvim-telescope/telescope.nvim",
 		event = "VimEnter",
-		branch = "0.1.8",
+		branch = "0.2.1",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			{ -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -447,6 +447,11 @@ require("lazy").setup({
 				--   },
 				-- },
 				-- pickers = {}
+				defaults = {
+					preview = {
+						treesitter = false,
+					},
+				},
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
@@ -543,8 +548,8 @@ require("lazy").setup({
 			-- Useful status updates for LSP.
 			{ "j-hui/fidget.nvim", opts = {} },
 
-			-- Allows extra capabilities provided by blink.cmp
-			"saghen/blink.cmp",
+			-- ✅ Use this instead:
+			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
 			-- Brief aside: **What is LSP?**
@@ -792,22 +797,22 @@ require("lazy").setup({
 			-- You can add other tools here that you want Mason to install
 			-- for you, so that they are available from within Neovim.
 			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, {
-				"stylua", -- Used to format Lua code
-			})
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+			-- vim.list_extend(ensure_installed, {
+			-- 	"stylua", -- Used to format Lua code
+			-- })
+			require("mason-tool-installer").setup({})
 
 			require("mason-lspconfig").setup({
-				ensure_installed = {
-					-- "eslint",
-					"lua_ls",
-					-- "rust_analyzer",
-					-- "ts_ls",
-					-- "cssls",
-					"html",
-					"gopls",
-					"svelte",
-				}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+				-- ensure_installed = {
+				-- 	-- "eslint",
+				-- 	"lua_ls",
+				-- 	-- "rust_analyzer",
+				-- 	-- "ts_ls",
+				-- 	-- "cssls",
+				-- 	"html",
+				-- 	"gopls",
+				-- 	"svelte",
+				-- }, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
 				automatic_installation = false,
 				handlers = {
 					function(server_name)
@@ -1064,39 +1069,29 @@ require("lazy").setup({
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		main = "nvim-treesitter.configs", -- Sets main module to use for opts
-		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+		branch = "main",
+		main = "nvim-treesitter", -- Sets main module to use for opts
 		opts = {
-			ensure_installed = {
-				"bash",
-				"c",
-				"diff",
-				"html",
-				"lua",
-				"luadoc",
-				"markdown",
-				"markdown_inline",
-				"query",
-				"vim",
-				"vimdoc",
-				"jsdoc",
-				"tsx",
-				"typescript",
-				"javascript",
-				"go",
-			},
-			-- Autoinstall languages that are not installed
-			auto_install = false,
-			sync_install = true,
+			-- ensure_installed = { "lua", "vim", "vimdoc", "go" }, -- add your languages
+			-- auto_install = true,
 			highlight = {
 				enable = true,
-				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-				--  If you are experiencing weird indenting issues, add the language to
-				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
-				additional_vim_regex_highlighting = false,
 			},
-			-- indent = { enable = true, disable = { "ruby" } },
 		},
+		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+		-- opts = {
+		-- 	-- Autoinstall languages that are not installed
+		-- 	auto_install = false,
+		-- 	sync_install = true,
+		-- 	highlight = {
+		-- 		enable = true,
+		-- 		-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+		-- 		--  If you are experiencing weird indenting issues, add the language to
+		-- 		--  the list of additional_vim_regex_highlighting and disabled languages for indent.
+		-- 		additional_vim_regex_highlighting = false,
+		-- 	},
+		-- 	-- indent = { enable = true, disable = { "ruby" } },
+		-- },
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-context",
 		},
@@ -1129,6 +1124,7 @@ require("lazy").setup({
 	--
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	{ import = "custom.plugins" },
+
 	--
 	-- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
 	-- Or use telescope!

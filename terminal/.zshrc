@@ -85,4 +85,3 @@ export PATH="$HOME/zig-linux-x86_64-0.14.0/:$PATH"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 export PATH="/home/leo/.zapstore:$PATH"
 
-export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/keyring/ssh
