@@ -1070,14 +1070,38 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		branch = "main",
-		main = "nvim-treesitter", -- Sets main module to use for opts
 		opts = {
-			-- ensure_installed = { "lua", "vim", "vimdoc", "go" }, -- add your languages
-			-- auto_install = true,
+			ensure_installed = { "lua", "vim", "vimdoc", "query", "go" },
 			highlight = {
 				enable = true,
 			},
 		},
+		config = function(_, opts)
+			local treesitter = require("nvim-treesitter")
+
+			treesitter.setup({})
+
+			if opts.ensure_installed and #opts.ensure_installed > 0 then
+				treesitter.install(opts.ensure_installed)
+			end
+
+			if opts.highlight and opts.highlight.enable then
+				local group = vim.api.nvim_create_augroup("kickstart-treesitter-highlight", { clear = true })
+
+				vim.api.nvim_create_autocmd("FileType", {
+					group = group,
+					callback = function(event)
+						pcall(vim.treesitter.start, event.buf)
+					end,
+				})
+
+				for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+					if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buftype == "" and vim.bo[buf].filetype ~= "" then
+						pcall(vim.treesitter.start, buf)
+					end
+				end
+			end
+		end,
 		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 		-- opts = {
 		-- 	-- Autoinstall languages that are not installed
