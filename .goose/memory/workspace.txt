@@ -1,0 +1,3 @@
+# hidden-files
+When searching for files, remember to include hidden files and directories.
+

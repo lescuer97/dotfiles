@@ -1,12 +1,13 @@
+# If not running interactively, don't do anything (leave this at the top of this file)
+[[ $- != *i* ]] && return
+
+# All the default Omarchy aliases and functions
+# (don't mess with these directly, just overwrite them here!)
+source ~/.local/share/omarchy/default/bash/rc
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -132,4 +133,22 @@ export PATH="$PATH:/home/leo/Programar/sdk/flutter/bin"
 export DENO_INSTALL="/home/leo/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH=":$PATH:/home/leo/.local/bin"
+export PATH=":$PATH:/home/leo/go/bin"
 export PATH="$HOME/zig-linux-x86_64-0.13.0/:$PATH"
+export PATH="/home/leo/.zapstore:$PATH"
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="/home/leo/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+#
+#
+# SSH config
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
