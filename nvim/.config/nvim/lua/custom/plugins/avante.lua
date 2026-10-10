@@ -17,6 +17,7 @@ return {
 			opencode = {
 				command = "opencode",
 				args = { "acp" },
+				env = { OPENCODE_CONFIG_CONTENT = '{"model":"openai/gpt-6-luna"}' },
 			},
 		},
 	},
