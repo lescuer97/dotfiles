@@ -1,0 +1,7 @@
+^/README\.md$
+^/\.config/opencode/node_modules(/.*)?$
+^/\.config/opencode/service\.json$
+^/\.config/opencode/package(-lock)?\.json$
+^/\.config/opencode/bun\.lockb?$
+^/\.config/opencode/plugins/nono-sandbox\.ts$
+^/\.config/opencode/skills/nono-sandbox(/.*)?$

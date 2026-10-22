@@ -1,0 +1,156 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "bash": {
+      "git commit*": "deny"
+    }
+  },
+  "plugin": ["opencode-mem@v2.29.2"],
+  "mcp": {
+  "context7": {
+    "type": "remote",
+    "url": "https://mcp.context7.com/mcp",
+    "enabled": true
+  }
+},
+  "provider": {
+    "ppq": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "ppq",
+      "options": {
+        "baseURL": "http://127.0.0.1:8787/v1",
+        "includeUsage": true
+      },
+      "models": {
+        "private/glm-5-3-flash": {
+          "name": "GLM-5.3 Flash (Private via TEE)"
+        },
+        "google/gemini-4-argon": {
+          "name": "Gemini 4 Argon"
+        },
+        "private/glm-5-3": {
+          "name": "GLM-5.3 (Private via TEE)"
+        },
+        "private/kimi-k3": {
+          "name": "Kimi K3 (Private via TEE)"
+        },
+        "private/deepseek-v4-1-flash": {
+          "name": "DeepSeek V4.1 Flash (Private via TEE)"
+        },
+        "x-ai/grok-code-fast-1": {
+          "name": "x-ai/grok-code-fast-1"
+        },
+        "anthropic/claude-sonnet-4": {
+          "name": "anthropic/claude-sonnet-4"
+        },
+        "anthropic/claude-sonnet-4.5": {
+          "name": "anthropic/claude-sonnet-4.5"
+        },
+        "claude-sonnet-4.6": {
+          "name": "claude-sonnet-4.6"
+        },
+        "claude-haiku-4.5": {
+          "name": "claude-haiku-4.5"
+        },
+        "anthropic/claude-3.5-haiku": {
+          "name": "anthropic/claude-3.5-haiku"
+        },
+        "claude-opus-4.5": {
+          "name": "claude-opus-4.5"
+        },
+        "claude-opus-4.6": {
+          "name": "claude-opus-4.6"
+        },
+        "anthropic/claude-opus-4.1": {
+          "name": "anthropic/claude-opus-4.1"
+        },
+
+        "gemini-3-flash-preview": {
+          "name": "gemini-3-flash-preview"
+        },
+        "gemini-3-pro-preview": {
+          "name": "gemini-3-pro-preview"
+        },
+        "google/gemini-3.1-pro-preview": {
+          "name": "google/gemini-3.1-pro-preview"
+        },
+
+        "minimax/minimax-m2.5": {
+          "name": "minimax/minimax-m2.5"
+        },
+
+        "z-ai/glm-5": {
+          "name": "z-ai/glm-5"
+        },
+
+        "moonshotai/kimi-k2.6": {
+          "name": "moonshotai/kimi-k2.6"
+        },
+
+        "gpt-5.1": {
+          "name": "gpt-5.1"
+        },
+        "gpt-5.1-codex": {
+          "name": "gpt-5.1-codex"
+        },
+        "openai/gpt-5.1-codex-max": {
+          "name": "openai/gpt-5.1-codex-max"
+        },
+        "openai/gpt-5.1-codex-mini": {
+          "name": "openai/gpt-5.1-codex-mini"
+        },
+        "openai/gpt-5": {
+          "name": "openai/gpt-5"
+        },
+        "openai/gpt-5-codex": {
+          "name": "openai/gpt-5-codex"
+        },
+        "gpt-5-nano": {
+          "name": "gpt-5-nano"
+        },
+        "gpt-5.2": {
+          "name": "gpt-5.2"
+        },
+        "gpt-5.2-codex": {
+          "name": "gpt-5.2-codex"
+        },
+        "openai/gpt-5.3-codex": {
+          "name": "openai/gpt-5.3-codex"
+        },
+        "openai/gpt-5.4": {
+          "name": "openai/gpt-5.4"
+        },
+        "deepseek/deepseek-v4-flash": {
+          "name": "DeepSeek V4 Flash"
+        },
+        "deepseek/deepseek-v4.1-flash": {
+          "name": "DeepSeek V4.1 Flash"
+        },
+        "deepseek/deepseek-v4-pro": {
+          "name": "DeepSeek V4 Pro"
+        },
+        "qwen/qwen3.7-max": {
+          "name": "Qwen3.7 Max"
+        },
+        "moonshotai/kimi-k2.7-code": {
+          "name": "Kimi K2.7 Code"
+        },
+        "z-ai/glm-5.2": {
+          "name": "GLM 5.2"
+        },
+        "moonshotai/kimi-k3": {
+          "name": "Kimi K3"
+        },
+        "qwen/qwen3.8-max": {
+          "name": "Qwen3.8 Max"
+        },
+        "z-ai/glm-5.3-flash": {
+          "name": "GLM 5.3 Flash"
+        },
+        "glm-5.3": {
+          "name": "GLM 5.3"
+        }
+      }
+    }
+  }
+}
