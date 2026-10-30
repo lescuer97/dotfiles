@@ -7,12 +7,38 @@
   },
   "plugin": ["opencode-mem@v2.29.2"],
   "mcp": {
-  "context7": {
-    "type": "remote",
-    "url": "https://mcp.context7.com/mcp",
-    "enabled": true
-  }
-},
+    "servers": {
+      "context7": {
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp"
+      },
+      "notion": {
+        "type": "remote",
+        "url": "https://mcp.notion.com/mcp"
+      },
+      "chrome-devtools": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "chrome-devtools-mcp@1.12.0",
+          "--executablePath",
+          "/Applications/Chromium.app/Contents/MacOS/Chromium",
+          "--isolated",
+          "--no-usage-statistics",
+          "--no-performance-crux",
+          "--redact-network-headers"
+        ],
+        "environment": {
+          "CHROME_DEVTOOLS_MCP_NO_UPDATE_CHECKS": "1"
+        }
+      },
+      "figma": {
+        "type": "remote",
+        "url": "https://mcp.figma.com/mcp"
+      }
+    }
+  },
   "provider": {
     "ppq": {
       "npm": "@ai-sdk/openai-compatible",
