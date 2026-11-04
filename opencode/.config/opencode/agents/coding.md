@@ -1,7 +1,7 @@
 ---
 description: Coding sole implementation agent via DeepSeek V4.1 Flash (ppq). Use for all code implementation and editing, including mechanical changes, test fixes, formatting, refactoring, debugging, and multi-file changes. REQUIRES an explicit, self-contained task brief from the coordinating agent before writing or refactoring code — full context plus exactly what must change, with no missing information.
 mode: all
-model: ppq/deepseek/deepseek-v4.1-flash
+model: numes/deepseek/deepseek-v4.1-flash
 permissions:
   - action: subagent
     resource: "*"
