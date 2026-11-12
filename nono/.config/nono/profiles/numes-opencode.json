@@ -1,0 +1,42 @@
+{
+  "extends": "opencode",
+  "meta": {
+    "name": "numes-opencode",
+    "version": "1.0.0",
+    "description": "opencode launched through numes, with Chromium for the chrome-devtools MCP; small network allowlist"
+  },
+  "filesystem": {
+    "allow": ["$HOME/.config/numes", "$HOME/.local/share/numes", "$HOME/.cache/chrome-devtools-mcp"],
+    "read": ["$HOME/.local/bin/numes", "/Applications/Chromium.app"]
+  },
+  "platform_overrides": {
+    "macos": {
+      "command_policies": {
+        "commands": {
+          "git": {
+            "executable": "/opt/homebrew/bin/git"
+          }
+        }
+      }
+    }
+  },
+  "network": {
+    "allow_domain": [
+      "api.numes.ai",
+      "auth.numes.ai",
+      "releases.numes.ai",
+      "numes.ai",
+      "models.dev",
+      "registry.npmjs.org",
+      "mcp.context7.com",
+      "mcp.notion.com",
+      "mcp.figma.com",
+      "imagekit.io",
+      "chatgpt.com",
+      "auth.openai.com",
+      "api.openai.com"
+    ],
+    "no_proxy": ["localhost", "127.0.0.1"],
+    "open_port": [0]
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "extends": [
+    "nolabs-ai/opencode"
+  ],
+  "meta": {
+    "name": "opencode",
+    "version": "1.0.0",
+    "description": "Runtime-discovered path additions for opencode + Codex GUI sandbox",
+    "author": null
+  },
+  "security": {
+    "signal_mode": null,
+    "process_info_mode": null,
+    "ipc_mode": null,
+    "capability_elevation": null,
+    "approval_backends": {},
+    "approval_defaults": null,
+    "wsl2_proxy_policy": null
+  },
+  "groups": {
+    "include": [],
+    "exclude": []
+  },
+  "commands": {
+    "allow": [],
+    "deny": []
+  },
+  "filesystem": {
+    "allow": [
+      "/Users/leo/.volta",
+      "~/Documents/Codex",
+      "~/Documents/doo",
+      "~/Programming/doo",
+      "~/Programming/coinkite-tap-proto",
+      "~/Programming/zig-nostr-relay",
+      "~/Programming/zig-raylib-field",
+      "~/Programming/shop",
+      "~/Library/Application Support/Codex",
+      "~/Library/Application Support/com.openai.codex",
+      "/crashpad/crashpad/util/mach",
+      "~/Programming",
+      "~/.opencode-mem"
+    ],
+    "read": [
+      "~/.opencode-mem",
+      "~/.opencode-mem/data",
+      "~/Programming/dotfiles/nvim",
+      "~/Programming/dotfiles/nvim/.config",
+      "~/Programming/dotfiles/nvim/.config/nono",
+      "~/Programming/dev",
+      "~/Programming/halloween_campaign",
+      "~/Programming/inhouse_generalization",
+      "~/Programming/performance_improvements",
+      "~/Programming/product_globalization",
+      "~/Library/Application Support"
+    ],
+    "write": [],
+    "allow_file": [
+      "~/Library/Preferences/com.openai.codex.plist",
+      "~/Library/Preferences/com.openai.sky.CUAService.plist"
+    ],
+    "read_file": [
+      "~/.opencode-mem/data/metadata.db",
+      "~/Programming/shop/.git/worktrees/old_style_change/commondir"
+    ],
+    "write_file": [
+      "~/Programming/shop/.git/opencode"
+    ],
+    "unix_socket": [],
+    "unix_socket_bind": [],
+    "unix_socket_dir": [],
+    "unix_socket_dir_bind": [
+      "~/.codex/ipc"
+    ],
+    "unix_socket_subtree": [],
+    "unix_socket_subtree_bind": [],
+    "deny": [],
+    "bypass_protection": [],
+    "suppress_save_prompt": [
+      "/System",
+      "/Users",
+      "~/",
+      "~/Programming",
+      "~/Programming/dotfiles",
+      "~/Programming/dotfiles/nvim",
+      "~/Programming/dotfiles/nvim/.config",
+      "~/Programming/dotfiles/nvim/.config/nono"
+    ]
+  },
+  "network": {
+    "block": false,
+    "allow_http2": false,
+    "allow_domain": [],
+    "deny_domain": [],
+    "open_port": [],
+    "open_port_range": [],
+    "listen_port": [],
+    "listen_port_range": [],
+    "connect_port": [],
+    "no_proxy": [],
+    "custom_credentials": {},
+    "tls_intercept": null,
+    "upstream_proxy": null,
+    "upstream_bypass": []
+  },
+  "diagnostics": {
+    "suppress_system_services": []
+  },
+  "linux": {
+    "af_unix_mediation": null,
+    "sandbox_policy": null
+  },
+  "env_credentials": {},
+  "command_policies": {
+    "executable_dirs": [],
+    "allow_writable_executables": false,
+    "entrypoint": null,
+    "approval_backends": {},
+    "approval_defaults": {
+      "backend": null,
+      "timeout_secs": null
+    },
+    "credentials": {},
+    "commands": {
+      "git": {
+        "executable": null,
+        "allow_writable_executable": false,
+        "can_use": [],
+        "export_env": [],
+        "sandbox": null,
+        "from": {
+          "session": {
+            "sandbox": {
+              "fs_read": [],
+              "fs_read_file": [],
+              "fs_write": [],
+              "fs_write_file": [],
+              "use_credentials": [],
+              "credentials": [],
+              "argv_prepend": [],
+              "network": null,
+              "environment": null,
+              "allow_raw_file_credentials_in_chained_policy": false,
+              "resources": null,
+              "stdio": null,
+              "open_urls": null,
+              "allow_launch_services": false
+            },
+            "invocation_policy": {
+              "default": "allow",
+              "deny": [
+                {
+                  "argv": {
+                    "exact": null,
+                    "prefix": [
+                      "push"
+                    ],
+                    "contains": null
+                  },
+                  "env": {},
+                  "backend": null,
+                  "reason": "git push prohibited",
+                  "timeout_secs": null
+                },
+                {
+                  "argv": {
+                    "exact": null,
+                    "prefix": [
+                      "commit"
+                    ],
+                    "contains": null
+                  },
+                  "env": {},
+                  "backend": null,
+                  "reason": "git commit prohibited",
+                  "timeout_secs": null
+                },
+                {
+                  "argv": {
+                    "exact": null,
+                    "prefix": null,
+                    "contains": [
+                      "push"
+                    ]
+                  },
+                  "env": {},
+                  "backend": null,
+                  "reason": "git push prohibited (also after global flags, e.g. git -C path push)",
+                  "timeout_secs": null
+                },
+                {
+                  "argv": {
+                    "exact": null,
+                    "prefix": null,
+                    "contains": [
+                      "commit"
+                    ]
+                  },
+                  "env": {},
+                  "backend": null,
+                  "reason": "git commit prohibited (also after global flags)",
+                  "timeout_secs": null
+                }
+              ],
+              "approve": [],
+              "allow": []
+            }
+          }
+        },
+        "allow_direct_exec_bypass": [],
+        "allow_direct_exec_bypass_with_credentials": false
+      }
+    },
+    "deny_direct_exec_bypass": [],
+    "session_export_env": []
+  },
+  "credential_capture": {},
+  "credential_providers": {},
+  "credential_routes": [],
+  "workdir": {
+    "access": "none"
+  },
+  "hooks": {},
+  "session_hooks": {},
+  "rollback": {
+    "exclude_patterns": [],
+    "exclude_globs": []
+  },
+  "skipdirs": [],
+  "packs": [],
+  "command_args": [],
+  "unsafe_macos_seatbelt_rules": []
+}
