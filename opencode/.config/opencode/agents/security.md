@@ -1,7 +1,7 @@
 ---
-description: Cyber security analysis agent (Kimi K3). Use for security questions - vulnerability assessment, threat modeling, secure code review, OWASP/CWE mapping, dependency and CVE audits, auth, crypto, and input-handling review, hardening advice. Read-only - produces reports, never edits code.
+description: Cyber security analysis agent (Kimi K3). Use at the end of a coding session (after implementation and verification), or when the user explicitly requires it — never during planning or mid-implementation. For security questions - vulnerability assessment, threat modeling, secure code review, OWASP/CWE mapping, dependency and CVE audits, auth, crypto, and input-handling review, hardening advice. Read-only - produces reports, never edits code.
 mode: subagent
-model: numes/moonshotai/kimi-k3
+model: numes/uniboshi/kimi-k3-abliterated-v1
 permissions:
   - action: edit
     resource: "*"

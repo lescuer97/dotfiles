@@ -1,7 +1,7 @@
 ---
-description: Planning, design, root-cause diagnosis, and performance analysis. Produces evidence and actionable recommendations or specs; does not implement code.
+description: Planning, design, bug debugging and root-cause diagnosis, and performance analysis. Produces findings, evidence, verified hypotheses, and actionable recommendations or specs; never implements code.
 mode: subagent
-model: openai/gpt-6.1-sol
+model: openai/gpt-6.1-astra
 permissions:
   - action: subagent
     resource: "*"
