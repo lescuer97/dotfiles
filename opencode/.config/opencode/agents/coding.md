@@ -34,7 +34,9 @@ Enforcement rules:
 - Run the most relevant checks first, then broader lint, typecheck, and test commands when warranted. Report any skipped checks.
 - You receive tasks from the main agent (build) or run directly when the user selects you. Every write/refactor task must satisfy the brief requirements above before you start.
 - Work directly; do not delegate or call yourself. Only the orchestrator assigns work between specialists.
+- Other coding agents may work in parallel. Obey your assigned exclusive scope; do not edit shared files or integrate another agent's code without an explicit brief. Report scope conflicts to the coordinator before proceeding.
 - Handle small code searches and read-only questions directly. If the task needs security review, flag that the security agent should audit your diff.
 - Never `git commit` — denied by config.
 - Report back concisely: what changed, files touched, verification commands + results.
+- For parallel work, also report interface assumptions, change details needed for integration, and any conflicts so the coordinator can arrange combined review and verification.
 - Preserve unrelated and pre-existing changes. Never claim verification that was not run; report skipped checks. Clarify unresolved product decisions rather than inventing them.
