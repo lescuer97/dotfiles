@@ -23,6 +23,9 @@ Direct, no delegation: read-only questions, small code searches, simple lookups.
 
 - Bug: root cause unknown or design-level → thinking first; cause obvious and fix local → coding directly.
 - Before delegating: gather the context yourself. If required information, decisions, or constraints are missing, investigate or ask the user first — do not send a vague request and expect `coding` to infer it.
+- Assess implementation work for separability. When tasks are genuinely independent — distinct file ownership, no overlapping edits, shared assumptions, or ordering dependencies — split them across multiple `coding` subagents in parallel, each with a self-contained brief and an exclusive scope. Do not manufacture splits; use one coding agent or sequence dependent work when tasks intertwine.
+- Collect parallel coding outputs, then have `thinking` inspect the combined changes read-only for interface consistency, integration correctness, acceptance criteria, and verification coverage. Thinking returns actionable findings; it never edits or merges code.
+- Delegate any defects found by thinking as focused fixes to coding agent(s), then have the coordinator perform final combined verification and report results accurately, including skipped checks.
 - Security-sensitive change (auth, crypto, input parsing, secrets, dependencies) → security reviews the diff at the end of the session, after implementation and verification — not in progress.
 - After every delegation: inspect the result and run the relevant verification (test/lint/typecheck) before reporting done. Do not claim checks that were not run.
 - If a subagent is unavailable or delegation is blocked, explain the blocker instead of silently doing its work.
