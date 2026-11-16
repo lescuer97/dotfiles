@@ -1,7 +1,7 @@
 ---
-description: Coding sole implementation agent via GPT-6.1 Terra. Use for all code implementation and editing, including mechanical changes, test fixes, formatting, refactoring, debugging, and multi-file changes. REQUIRES an explicit, self-contained task brief from the coordinating agent before writing or refactoring code — full context plus exactly what must change, with no missing information.
+description: Coding sole implementation agent via DeepSeek V4.1 Flash. Use for all code implementation and editing, including mechanical changes, test fixes, formatting, refactoring, debugging, and multi-file changes. REQUIRES an explicit, self-contained task brief from the coordinating agent before writing or refactoring code — full context plus exactly what must change, with no missing information.
 mode: all
-model: openai/gpt-6.1-terra
+model: openai/gpt-6.1-sol
 permissions:
   - action: subagent
     resource: "*"

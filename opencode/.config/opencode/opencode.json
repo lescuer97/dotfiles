@@ -51,6 +51,12 @@
         "private/glm-5-3-flash": {
           "name": "GLM-5.3 Flash (Private via TEE)"
         },
+        "venice/abliteration-abliterated-model-large-flash": {
+          "name": "Abliterated Large Flash (DeepSeek V4.1 Flash)"
+        },
+        "venice/abliteration-abliterated-model-large-v2": {
+          "name": "Abliterated Large V2 (GLM-5.3)"
+        },
         "google/gemini-4-argon": {
           "name": "Gemini 4 Argon"
         },

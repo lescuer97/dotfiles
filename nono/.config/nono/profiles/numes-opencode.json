@@ -7,16 +7,44 @@
   },
   "filesystem": {
     "allow": ["$HOME/.config/numes", "$HOME/.local/share/numes", "$HOME/.cache/chrome-devtools-mcp"],
-    "read": ["$HOME/.local/bin/numes", "/Applications/Chromium.app"]
+    "read": ["$HOME/.local/bin/numes"]
   },
   "platform_overrides": {
     "macos": {
+      "filesystem": {
+        "read": ["/Applications/Chromium.app"]
+      },
+      "network": {
+        "open_port": [0]
+      },
       "command_policies": {
         "commands": {
           "git": {
             "executable": "/opt/homebrew/bin/git"
           }
         }
+      }
+    },
+    "linux": {
+      "filesystem": {
+        "allow": [
+          "$HOME/Programar/trabajo/cashu",
+          "$HOME/Programar/trabajo/open_source"
+        ],
+        "read": ["/usr/bin/chromium", "$HOME/.config/nvm/versions/node"]
+      },
+      "command_policies": {
+        "executable_dirs": ["/usr/lib/chromium"],
+        "commands": {
+          "git": {
+            "from": {
+              "session": {}
+            }
+          }
+        }
+      },
+      "network": {
+        "open_port": [4747, 8787, 49376]
       }
     }
   },
@@ -27,10 +55,12 @@
       "releases.numes.ai",
       "numes.ai",
       "models.dev",
+      "models.opencode.ai",
       "registry.npmjs.org",
       "mcp.context7.com",
       "mcp.notion.com",
       "mcp.figma.com",
+      "api.figma.com",
       "imagekit.io",
       "chatgpt.com",
       "auth.openai.com",
@@ -87,7 +117,6 @@
       "bubblydoo.studio",
       "*.bubblydoo.studio"
     ],
-    "no_proxy": ["localhost", "127.0.0.1"],
-    "open_port": [0]
+    "no_proxy": ["localhost", "127.0.0.1"]
   }
 }
